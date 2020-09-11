@@ -9,22 +9,22 @@ import ReactAux from '../../../hocs/ReactAux/ReactAux';
 const sideDrawer = (props) => {
 
     let attachedClasses = [classes.SideDrawer, classes.Close];
-    
-    if(props.open){
+
+    if (props.open) {
         attachedClasses = [classes.SideDrawer, classes.Open];
     }
 
     return (
-         
+
         <ReactAux>
-            <BackDrop show = {props.open} clicked = {props.closed}/>
-            <div className = {attachedClasses.join(' ')}>
-                <div className = {classes.Logo}>
-                <Logo/>
+            <BackDrop show={props.open} clicked={props.closed} />
+            <div className={attachedClasses.join(' ')}>
+                <div className={classes.Logo}>
+                    <Logo />
                 </div>
                 <nav>
-                    <NavigationItems/>
-                </nav>     
+                    <NavigationItems isAuthenticated={props.isAuth} />
+                </nav>
             </div>
         </ReactAux>
 
