@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import axios from '../../axios-orders';
+import axios from 'axios';
 
 export const purchaseBurgerSuccess = (id, orderData) => {
     return {
@@ -23,9 +23,15 @@ export const purchaseBurgerStart = () => {
 };
 
 export const purchaseBurger = (orderData, token) => {
+    console.log('inside purchase burger..post', token);
+    console.log(axios);
+    console.log('printing  object', orderData)
+
+
     return dispatch => {
         dispatch(purchaseBurgerStart());
-        axios.post('/orders.json?auth=' + token, orderData)
+        console.log('created request for ..post');
+        axios.post('https://react-burger-app-2600b.firebaseio.com/orders.json?auth=' + token, orderData)
             .then(response => {
                 console.log(response.data);
                 dispatch(purchaseBurgerSuccess(response.data.name, orderData));
